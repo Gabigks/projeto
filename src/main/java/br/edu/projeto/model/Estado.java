@@ -14,7 +14,7 @@ public class Estado {
 	private String sigla;
 	
 	@NotNull
-	private String real;
+	private String icms;
 
 	public String getSigla() {
 		return sigla;
@@ -24,12 +24,12 @@ public class Estado {
 		this.sigla = sigla;
 	}
 
-	public String getReal() {
-		return real;
+	public String getIcms() {
+		return icms;
 	}
 
-	public void setReal(String real) {
-		this.real = real;
+	public void setReal(String icms) {
+		this.icms = icms;
 	}
 	
 	

@@ -24,8 +24,7 @@ public class Funcionario {
 	private String nome;
 	
 	@NotNull
-	@Column(name = "valor_hora")
-	private Double valor;
+	private Double vlhora;
 
 	public Integer getId() {
 		return id;
@@ -52,11 +51,11 @@ public class Funcionario {
 	}
 
 	public Double getValor() {
-		return valor;
+		return vlhora;
 	}
 
-	public void setValor(Double valor) {
-		this.valor = valor;
+	public void setVlhora(Double vlhora) {
+		this.vlhora = vlhora;
 	}
 	
 }

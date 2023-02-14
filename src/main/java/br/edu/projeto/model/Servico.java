@@ -21,7 +21,7 @@ public class Servico {
 		private String setor;
 		
 		@NotNull
-		private String descricao;
+		private String desc;
 
 		public Integer getId() {
 			return id;
@@ -39,12 +39,12 @@ public class Servico {
 			this.setor = setor;
 		}
 
-		public String getDescricao() {
-			return descricao;
+		public String getDesc() {
+			return desc;
 		}
 
-		public void setDescricao(String descricao) {
-			this.descricao = descricao;
+		public void setDesc(String desc) {
+			this.desc= desc;
 		}
 		
 		

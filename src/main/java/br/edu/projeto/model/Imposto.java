@@ -28,8 +28,7 @@ public class Imposto {
 	private Double valor;
 	
 	@NotNull
-	@Column(name = "data_alteracao")
-	private Date dt_alt;
+	private Date dtalt;
 	
 	@NotNull
 	private String nome;
@@ -58,12 +57,12 @@ public class Imposto {
 		this.valor = valor;
 	}
 
-	public Date getDt_alt() {
-		return dt_alt;
+	public Date getDtalt() {
+		return dtalt;
 	}
 
-	public void setDt_alt(Date dt_alt) {
-		this.dt_alt = dt_alt;
+	public void setDtalt(Date dtalt) {
+		this.dtalt = dtalt;
 	}
 
 	public String getNome() {

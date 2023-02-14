@@ -29,27 +29,27 @@ public class Orcamento {
 	private String id;
 	
 	@NotNull
-	@Column(name = "tipo_prioridade")
+	@Column(name = "tprio")
 	private String prioridade;
 	
 	@NotNull
-	@Column(name = "valor_servico")
+	@Column(name = "vlserv")
 	private Double val_s;
 	
 	@NotNull
-	@Column(name = "valor_funcionario")
+	@Column(name = "vlfunc")
 	private Double val_f;
 	
 	@NotNull
-	@Column(name = "valor_itens")
+	@Column(name = "vlitens")
 	private Double val_i;
 	
 	@NotNull
-	@Column(name = "data_abertura")
+	@Column(name = "dtaber")
 	private Date dt_abr;
 	
 	@NotNull
-	@Column(name = "data_fechamento")
+	@Column(name = "dtfecha")
 	private Date dt_fec;
 	
 	@ManyToOne
@@ -65,11 +65,6 @@ public class Orcamento {
 	private List<Item> itens = new ArrayList<Item>();
 
 	
-	
-	
-	
-	
-
 	public String getId() {
 		return id;
 	}

@@ -5,21 +5,17 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 
-import br.edu.projeto.model.Cliente;
+import br.edu.projeto.model.Fornecedor;
 
-public class ClienteDAO implements Serializable{
-
+public class FornecedorDAO implements Serializable{
 	@Inject
 	//Cria a conexão e controla a transação com o SGBD (usado pelo Hibernate)
     private EntityManager em;
 	
-	public Cliente encontrarId(String id) {
+	public Fornecedor encontrarId(String id) {
        // return em.find(Cliente.class, id);
-		return em.find(Cliente.class, id);
+		return em.find(Fornecedor.class, id);
         
     }
 	
@@ -38,20 +34,19 @@ public class ClienteDAO implements Serializable{
 	
 	//Query usando a linguagem HQL do Hibernate
 	//Idnicada para consultas simples
-	public List<Cliente> listarTodos() {
-	    return em.createQuery("SELECT c FROM Cliente c ", Cliente.class).getResultList();      
+	public List<Fornecedor> listarTodos() {
+	    return em.createQuery("SELECT f FROM Fornecedor f ", Fornecedor.class).getResultList();      
 	}
 	
-//	public void salvar(Cliente c) {
-//		em.persist(c);
+//	public void salvar(Fornecedor f) {
+//		em.persist(f);
 //	}
 //	
-//	public void atualizar(Cliente c) {
-//		em.merge(c);
+//	public void atualizar(Fornecedor f) {
+//		em.merge(f);
 //	}
 //	
-//	public void excluir(Cliente c) {
-//		em.remove(em.getReference(Cliente.class, c.getCnpj()));
+//	public void excluir(Fornecedor f) {
+//		em.remove(em.getReference(Fornecedor.class, f.getCnpj()));
 //	}
-	
 }

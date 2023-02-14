@@ -27,7 +27,7 @@ public class Item {
 	private String id;
 	
 	@NotNull
-	private Double custo;
+	private Double custoun;
 	
 	@NotNull
 	private String categoria;
@@ -36,11 +36,9 @@ public class Item {
 	private String nome;
 	
 	@NotNull
-	@Column (name = "unidade_de_medida")
-	private String un_med;
+	private String unmedida;
 	
 	@NotNull
-	@Column (name = "descricao")
 	private String desc;
 	
     @ManyToMany(mappedBy = "itens", fetch = FetchType.EAGER)
@@ -54,12 +52,12 @@ public class Item {
 		this.id = id;
 	}
 
-	public Double getCusto() {
-		return custo;
+	public Double getCustoun() {
+		return custoun;
 	}
 
-	public void setCusto(Double custo) {
-		this.custo = custo;
+	public void setCustoun(Double custoun) {
+		this.custoun = custoun;
 	}
 
 	public String getCategoria() {
@@ -78,12 +76,12 @@ public class Item {
 		this.nome = nome;
 	}
 
-	public String getUn_med() {
-		return un_med;
+	public String getUnmedida() {
+		return unmedida;
 	}
 
-	public void setUn_med(String un_med) {
-		this.un_med = un_med;
+	public void setUnmedida(String unmedida) {
+		this.unmedida = unmedida;
 	}
 
 	public String getDesc() {
@@ -93,6 +91,13 @@ public class Item {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
-	
+
+	public List<Orcamento> getOrcamento() {
+		return orcamento;
+	}
+
+	public void setOrcamento(List<Orcamento> orcamento) {
+		this.orcamento = orcamento;
+	}
 	
 }
