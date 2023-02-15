@@ -1,36 +1,72 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- Página sem template de exemplo -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:ui="http://java.sun.com/jsf/facelets"
-    xmlns:f="http://java.sun.com/jsf/core"
-    xmlns:h="http://java.sun.com/jsf/html"
-    template="/WEB-INF/templates/default.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-    <ui:define name="content">
-        <h1>Página de Login</h1>
-        
-        <div class="card">
-    <h:form id="form">
-        <p:dataTable id="cliente" var="cliente" value="#{clienteController.clientes}">
-            <f:facet name="header">
-                Cliente
-            </f:facet>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+    
+<h:head>
+    <title>Orçamento</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</h:head>
 
-            <p:column headerText="Cliente">
-                <h:outputText value="#{cliente.cnpj}" />
-            </p:column>
-            <p:column headerText="Name">
-                <h:outputText value="#{cliente.nome}" />
-            </p:column>
-            <p:column headerText="Estado">
-                <h:outputText value="#{cliente.estado}" />
-            </p:column>
-            <p:column headerText="Cep">
-                <h:outputText value="#{cliente.cep}" />
-            </p:column>
-        </p:dataTable>
+<h:body>
 
-    </h:form>
-</div>
-    </ui:define>
-</ui:composition>
+	<div class="card">
+	    <h:form>
+	        <p:growl>
+	            <p:autoUpdate/>
+	        </p:growl>
+	
+	            <p:tabMenu activeIndex="#{param.i}">
+			        <p:menuitem value="Dados cadastrais" icon="pi pi pi-id-card">
+			            <f:param name="i" value="0"/>
+			        </p:menuitem>
+			        <p:menuitem value="Funcionarios" icon="pi pi-fw pi-users">
+			            <f:param name="i" value="1"/>
+			        </p:menuitem>
+			        <p:menuitem value="Itens" icon="pi pi-fw pi-wrench">
+			            <f:param name="i" value="2"/>
+			        </p:menuitem>
+			        <p:menuitem value="Serviços" icon="pi pi-fw pi-book">
+			            <f:param name="i" value="3"/>
+			        </p:menuitem>
+			        <p:menuitem value="Impostos" icon="pi pi-fw pi-money-bill">
+			            <f:param name="i" value="3"/>
+			        </p:menuitem>
+			        <p:menuitem value="Finalizar orçamento" icon="pi pi-fw pi-check" disabled = "true">
+			            <f:param name="i" value="4"/>
+			        </p:menuitem>
+			    </p:tabMenu>
+		</h:form>
+	</div>
+	   
+
+<!--     <h:form> -->
+<!--     <p:splitter style="height: 300px" styleClass="mb-5"> -->
+<!--         <p:splitterPanel styleClass="flex align-items-center justify-content-center"> -->
+<!--             <div class="field"> -->
+<!-- 		    	<span class="ui-input-icon-left"> -->
+<!-- 			        <i class="pi pi-search" /> -->
+<!-- 			        <p:inputText placeholder="Search" styleclass="block"/> -->
+<!-- 		        </span> -->
+<!-- 		        <small class="block">Enter your username to reset your password.</small> -->
+<!-- 	    	</div> -->
+<!-- 	    	<div class="field"> -->
+<!-- 		    	<span class="ui-input-icon-left"> -->
+<!-- 			        <i class="pi pi-search" /> -->
+<!-- 			        <p:inputText placeholder="Search" styleclass="block"/> -->
+<!-- 		        </span> -->
+<!-- 		        <small class="block">Enter your username to reset your password.</small> -->
+<!-- 	    	</div> -->
+<!--         </p:splitterPanel> -->
+<!--         <p:splitterPanel styleClass="flex align-items-center justify-content-center"> -->
+<!--             Panel 2 -->
+<!--         </p:splitterPanel> -->
+<!--     </p:splitter> -->
+<!--    	</h:form> -->
+</h:body>
+
+</html>

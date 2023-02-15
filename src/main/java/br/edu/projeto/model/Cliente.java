@@ -35,7 +35,6 @@ public class Cliente {
 	private String cep;
 	
 	@OneToMany (cascade = CascadeType.ALL, mappedBy = "cliente")
-	@JoinColumn(name = "cnpj")
 	private List<Orcamento> lista_orcamentos;
 
 	public String getCnpj() {
