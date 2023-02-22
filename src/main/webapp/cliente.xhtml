@@ -1,36 +1,79 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
-    template="/WEB-INF/templates/default.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-    <ui:define name="content">
-        <h1>Página de Login</h1>
-        
-        <div class="card">
-    <h:form id="form">
-        <p:dataTable id="cliente" var="cliente" value="#{clienteController.clientes}">
-            <f:facet name="header">
-                Cliente
-            </f:facet>
+    xmlns:p="http://primefaces.org/ui">
+    
+<h:head>
+    <title>cliente</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</h:head>
 
-            <p:column headerText="Cliente">
-                <h:outputText value="#{cliente.cnpj}" />
+<h:body>
+	
+	<div class="card">
+		<p:dataTable id="checkboxDT" var="cliente" value="#{dtSelectionView.products6}"
+        		selection="#{dtSelectionView.selectedProducts}" rowKey="#{cliente.id}"
+				style="margin-bottom:0" paginator="true" rows="5" selectionPageOnly="false">
+            <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+            <p:column headerText="Cnpj">
+                <h:outputText value="#{clienteController.cliente.cnpj}" />
             </p:column>
-            <p:column headerText="Name">
-                <h:outputText value="#{cliente.nome}" />
+
+            <p:column headerText="Nome">
+                <h:outputText value="#{clienteController.cliente.nome}" />
             </p:column>
+
             <p:column headerText="Estado">
-                <h:outputText value="#{cliente.estado}" />
+                <h:outputText value="#{clienteController.cliente.estado}" />
             </p:column>
+
             <p:column headerText="Cep">
-                <h:outputText value="#{cliente.cep}" />
+                <h:outputText value="#{clienteController.cliente.cep}" />
             </p:column>
         </p:dataTable>
+	</div>
+	
+	    <p:dialog header="Product Info" widgetVar="clienteDialog" modal="true" showEffect="fade"
+              hideEffect="fade" resizable="false">
+        <p:outputPanel id="productDetail" style="text-align:center;">
+            <p:column rendered="#{not empty clienteController.cliente}">
+                <div class="product">
+                    <div class="product-grid-item card" style="margin-bottom: 0">
+                        <div class="product-grid-item-top">
+                            <div>
+                                <i class="pi pi-tag product-category-icon"/>
+                                <span class="product-category">#{dtSelectionView.selectedProduct.category}</span>
+                            </div>
+                            <span class="product-badge status-#{dtSelectionView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dtSelectionView.selectedProduct.inventoryStatus.text}</span>
+                        </div>
+                        <div class="product-grid-item-content">
+                            <p:graphicImage
+                                    name="demo/images/product/#{dtSelectionView.selectedProduct.image}"/>
+                            <div class="product-name">#{dtSelectionView.selectedProduct.name}</div>
+                            <div class="product-description">#{dtSelectionView.selectedProduct.description}</div>
+                            <p:rating readonly="true" value="#{dtSelectionView.selectedProduct.rating}"/>
+                        </div>
+                        <div class="product-grid-item-bottom">
+                            <h:outputText value="#{dtSelectionView.selectedProduct.price}"
+                                          styleClass="product-price">
+                                <f:convertNumber currencySymbol="$" type="currency"/>
+                            </h:outputText>
+                            <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
+                                             disabled="#{dtSelectionView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
+                                <f:setPropertyActionListener value="#{dtSelectionView.selectedProduct}"
+                                                             target="#{dtSelectionView.selectedProduct}"/>
+                            </p:commandButton>
+                        </div>
+                    </div>
+                </div>
+            </p:column>
+        </p:outputPanel>
+    </p:dialog>
+	
+</h:body>
 
-    </h:form>
-</div>
-    </ui:define>
-</ui:composition>
+</html>
