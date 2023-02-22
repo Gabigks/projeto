@@ -13,17 +13,17 @@
 </h:head>
 
 <h:body>
-	
+	<h:form>
 	<div class="card">
 		<p:dataTable id="checkboxDT" var="cliente" value="#{dtClienteView.clientesTabela}"
         		selection="#{dtClienteView.clientesSelecionados}" rowKey="#{cliente.cnpj}"
-				style="margin-bottom:0" paginator="true" rows="5" selectionPageOnly="false"  filteredValue="#{dtClienteView.clientesTabela}" filterBy="#{dtClienteView.filterBy}">
+				style="margin-bottom:0" paginator="true" rows="5" selectionPageOnly="false"  filteredValue="#{dtClienteView.clientesTabela}">
             <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
-            <p:column headerText="Cnpj">
+            <p:column headerText="Cnpj" filterBy="#{cliente.cnpj}">
                 <h:outputText value="#{cliente.cnpj}" />
             </p:column>
 
-            <p:column headerText="Nome">
+            <p:column headerText="Nome" filterBy="#{cliente.nome}">
                 <h:outputText value="#{cliente.nome}" />
             </p:column>
 
@@ -36,6 +36,7 @@
             </p:column>
         </p:dataTable>
 	</div>
+	</h:form>
 	
 	   
 	

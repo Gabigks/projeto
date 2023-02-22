@@ -35,18 +35,20 @@ public class ClienteView implements Serializable{
     	clientesTabela=clienteDAO.listarTodos();
     	filterBy = new ArrayList<>();
 
-        filterBy.add(FilterMeta.builder()
-                .field("cnpj")
-                .filterValue(clienteSelecionado.getCnpj())
-                .matchMode(MatchMode.EQUALS)
-                .build());
+//        filterBy.add(FilterMeta.builder()
+//                .field("cnpj")
+//                .filterValue(clienteSelecionado.getCnpj())
+//                .matchMode(MatchMode.EQUALS)
+//                .build());
 
-        filterBy.add(FilterMeta.builder()
-                .field("date")
-                .filterValue(new ArrayList<>(Arrays.asList(LocalDate.now().minusDays(28), LocalDate.now().plusDays(28))))
-                .matchMode(MatchMode.BETWEEN)
-                .build());
-    
+//        filterBy.add(FilterMeta.builder()
+//                .field("dt_")
+//                .filterValue(new ArrayList<>(Arrays.asList(LocalDate.now().minusDays(28), LocalDate.now().plusDays(28))))
+//                .matchMode(MatchMode.BETWEEN)
+//                .build());
+    	
+    	
+//    
     }
 
 
