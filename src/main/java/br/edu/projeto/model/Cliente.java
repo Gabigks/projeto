@@ -34,9 +34,9 @@ public class Cliente {
 	@NotNull
 	private String cep;
 	
-	@OneToMany (cascade = CascadeType.ALL, mappedBy = "cliente")
-	@JoinColumn(name = "cnpj")
-	private List<Orcamento> lista_orcamentos;
+//	@OneToMany (cascade = CascadeType.ALL, mappedBy = "cliente")
+//	@JoinColumn(name = "cnpj")
+//	private List<Orcamento> lista_orcamentos;
 
 	public String getCnpj() {
 		return cnpj;
@@ -70,12 +70,12 @@ public class Cliente {
 		this.cep = cep;
 	}
 
-	public List<Orcamento> getLista_orcamentos() {
-		return lista_orcamentos;
-	}
-
-	public void setLista_orcamentos(List<Orcamento> lista_orcamentos) {
-		this.lista_orcamentos = lista_orcamentos;
-	}
+//	public List<Orcamento> getLista_orcamentos() {
+//		return lista_orcamentos;
+//	}
+//
+//	public void setLista_orcamentos(List<Orcamento> lista_orcamentos) {
+//		this.lista_orcamentos = lista_orcamentos;
+//	}
 	
 }

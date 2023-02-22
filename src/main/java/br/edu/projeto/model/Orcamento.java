@@ -52,8 +52,8 @@ public class Orcamento {
 	@Column(name = "dtfecha")
 	private Date dt_fec;
 	
-	@ManyToOne
-	private Cliente cliente;
+//	@ManyToOne
+//	private Cliente cliente;
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	 //Mapeia tabela intermediária (criada em relacionamentos Muitos para muitos), não é necessário uma classe modelo para a tabela intermediária

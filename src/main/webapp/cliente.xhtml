@@ -15,64 +15,29 @@
 <h:body>
 	
 	<div class="card">
-		<p:dataTable id="checkboxDT" var="cliente" value="#{dtSelectionView.products6}"
-        		selection="#{dtSelectionView.selectedProducts}" rowKey="#{cliente.id}"
-				style="margin-bottom:0" paginator="true" rows="5" selectionPageOnly="false">
+		<p:dataTable id="checkboxDT" var="cliente" value="#{dtClienteView.clientesTabela}"
+        		selection="#{dtClienteView.clientesSelecionados}" rowKey="#{cliente.cnpj}"
+				style="margin-bottom:0" paginator="true" rows="5" selectionPageOnly="false"  filteredValue="#{dtClienteView.clientesTabela}" filterBy="#{dtClienteView.filterBy}">
             <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
             <p:column headerText="Cnpj">
-                <h:outputText value="#{clienteController.cliente.cnpj}" />
+                <h:outputText value="#{cliente.cnpj}" />
             </p:column>
 
             <p:column headerText="Nome">
-                <h:outputText value="#{clienteController.cliente.nome}" />
+                <h:outputText value="#{cliente.nome}" />
             </p:column>
 
             <p:column headerText="Estado">
-                <h:outputText value="#{clienteController.cliente.estado}" />
+                <h:outputText value="#{cliente.estado}" />
             </p:column>
 
             <p:column headerText="Cep">
-                <h:outputText value="#{clienteController.cliente.cep}" />
+                <h:outputText value="#{cliente.cep}" />
             </p:column>
         </p:dataTable>
 	</div>
 	
-	    <p:dialog header="Product Info" widgetVar="clienteDialog" modal="true" showEffect="fade"
-              hideEffect="fade" resizable="false">
-        <p:outputPanel id="productDetail" style="text-align:center;">
-            <p:column rendered="#{not empty clienteController.cliente}">
-                <div class="product">
-                    <div class="product-grid-item card" style="margin-bottom: 0">
-                        <div class="product-grid-item-top">
-                            <div>
-                                <i class="pi pi-tag product-category-icon"/>
-                                <span class="product-category">#{dtSelectionView.selectedProduct.category}</span>
-                            </div>
-                            <span class="product-badge status-#{dtSelectionView.selectedProduct.inventoryStatus.name().toLowerCase()}">#{dtSelectionView.selectedProduct.inventoryStatus.text}</span>
-                        </div>
-                        <div class="product-grid-item-content">
-                            <p:graphicImage
-                                    name="demo/images/product/#{dtSelectionView.selectedProduct.image}"/>
-                            <div class="product-name">#{dtSelectionView.selectedProduct.name}</div>
-                            <div class="product-description">#{dtSelectionView.selectedProduct.description}</div>
-                            <p:rating readonly="true" value="#{dtSelectionView.selectedProduct.rating}"/>
-                        </div>
-                        <div class="product-grid-item-bottom">
-                            <h:outputText value="#{dtSelectionView.selectedProduct.price}"
-                                          styleClass="product-price">
-                                <f:convertNumber currencySymbol="$" type="currency"/>
-                            </h:outputText>
-                            <p:commandButton value="Add To Cart" icon="pi pi-shopping-cart"
-                                             disabled="#{dtSelectionView.selectedProduct.inventoryStatus == 'OUTOFSTOCK'}">
-                                <f:setPropertyActionListener value="#{dtSelectionView.selectedProduct}"
-                                                             target="#{dtSelectionView.selectedProduct}"/>
-                            </p:commandButton>
-                        </div>
-                    </div>
-                </div>
-            </p:column>
-        </p:outputPanel>
-    </p:dialog>
+	   
 	
 </h:body>
 
