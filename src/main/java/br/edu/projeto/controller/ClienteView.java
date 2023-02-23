@@ -33,7 +33,6 @@ public class ClienteView implements Serializable{
     @PostConstruct
     public void init() {
     	clientesTabela=clienteDAO.listarTodos();
-    	filterBy = new ArrayList<>();
 
 //        filterBy.add(FilterMeta.builder()
 //                .field("cnpj")
@@ -46,9 +45,7 @@ public class ClienteView implements Serializable{
 //                .filterValue(new ArrayList<>(Arrays.asList(LocalDate.now().minusDays(28), LocalDate.now().plusDays(28))))
 //                .matchMode(MatchMode.BETWEEN)
 //                .build());
-    	
-    	
-//    
+    	   
     }
 
 

@@ -17,8 +17,8 @@
 	<div class="card">
 		<p:dataTable id="checkboxDT" var="cliente" value="#{dtClienteView.clientesTabela}"
         		selection="#{dtClienteView.clientesSelecionados}" rowKey="#{cliente.cnpj}"
-				style="margin-bottom:0" paginator="true" rows="5" selectionPageOnly="false"  filteredValue="#{dtClienteView.clientesTabela}">
-            <p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+				style="margin-bottom:0" paginator="true" rows="5" selectionPageOnly="false">
+        	<p:column selectionMode="multiple" style="width:16px;text-align:center"/>
             <p:column headerText="Cnpj" filterBy="#{cliente.cnpj}">
                 <h:outputText value="#{cliente.cnpj}" />
             </p:column>
@@ -27,11 +27,11 @@
                 <h:outputText value="#{cliente.nome}" />
             </p:column>
 
-            <p:column headerText="Estado">
+            <p:column headerText="Estado" filterBy="#{cliente.estado}">
                 <h:outputText value="#{cliente.estado}" />
             </p:column>
 
-            <p:column headerText="Cep">
+            <p:column headerText="Cep" filterBy="#{cliente.cep}">
                 <h:outputText value="#{cliente.cep}" />
             </p:column>
         </p:dataTable>
