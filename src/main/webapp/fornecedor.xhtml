@@ -1,36 +1,43 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
-    template="/WEB-INF/templates/default.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-    <ui:define name="content">
-        <h1>Página de Login</h1>
-        
-        <div class="card">
-    <h:form id="form">
-        <p:dataTable id="fornecedor" var="fornecedor" value="#{fornecedorController.fornecedores}">
-            <f:facet name="header">
-                Fornecedor
-            </f:facet>
+    xmlns:p="http://primefaces.org/ui">
+    
+<h:head>
+    <title>Fornecedor</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</h:head>
 
-            <p:column headerText="Fornecedor">
+<h:body>
+	<h:form>
+	<div class="card">
+		<p:dataTable id="checkboxDT" var="fornecedor" value="#{dtFornecedorView.fornecedoresTabela}"
+        		selection="#{dtFornecedorView.fornecedoresSelecionados}" rowKey="#{fornecedor.cnpj}"
+				style="margin-bottom:0" paginator="true" rows="5" selectionPageOnly="false">
+        	<p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+            <p:column headerText="Cnpj" filterBy="#{fornecedor.cnpj}">
                 <h:outputText value="#{fornecedor.cnpj}" />
             </p:column>
-            <p:column headerText="Name">
+
+            <p:column headerText="Nome" filterBy="#{fornecedor.nome}">
                 <h:outputText value="#{fornecedor.nome}" />
             </p:column>
-            <p:column headerText="Estado">
+
+            <p:column headerText="Estado" filterBy="#{fornecedor.estado}">
                 <h:outputText value="#{fornecedor.estado}" />
             </p:column>
-            <p:column headerText="Cep">
+
+            <p:column headerText="Cep" filterBy="#{fornecedor.cep}">
                 <h:outputText value="#{fornecedor.cep}" />
             </p:column>
         </p:dataTable>
+	</div>
+	</h:form>
+	
+</h:body>
 
-    </h:form>
-</div>
-    </ui:define>
-</ui:composition>
+</html>

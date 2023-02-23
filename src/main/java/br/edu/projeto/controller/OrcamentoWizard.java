@@ -17,7 +17,6 @@ public class OrcamentoWizard implements Serializable{
     private Orcamento orcamento = new Orcamento();
 
     private boolean skip;
-    
 
 
     public Orcamento getOrcamento() {

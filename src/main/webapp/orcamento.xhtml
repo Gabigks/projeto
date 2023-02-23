@@ -15,16 +15,16 @@
 
 <body>
 
-		<div class="card2">
-	    <h:form>
+	<h:form>
+	    <div class="card">
 	        <p:growl>
 	            <p:autoUpdate/>
 	        </p:growl>
 	            <p:tabMenu activeIndex="#{param.i}">
-			        <p:menuitem value="Dados cadastrais" icon="pi pi pi-id-card">
+			        <p:menuitem value="Dados cadastrais" outcome="orcamento" icon="pi pi pi-id-card">
 			            <f:param name="i" value="0"/>
 			        </p:menuitem>
-			        <p:menuitem value="Funcionarios" icon="pi pi-fw pi-users">
+			        <p:menuitem value="Funcionarios" outcome="cliente" icon="pi pi-fw pi-users">
 			            <f:param name="i" value="1"/>
 			        </p:menuitem>
 			        <p:menuitem value="Itens" icon="pi pi-fw pi-wrench">
@@ -40,85 +40,41 @@
 			            <f:param name="i" value="4"/>
 			        </p:menuitem>
 			    </p:tabMenu>
-		</h:form>
-	</div>
-
-
+		</div>
+	</h:form>
+	
+	<h:form>
 	<div class="card2">
-	    <h:form>
-	
-	        <p:growl id="growl" sticky="true" showDetail="true"/>
-	
-	        <p:wizard widgetVar="wiz" flowListener="#{orcamentoWizard.onFlowProcess}">
-	            <p:tab id="personal" title="Dados cadastrais">
-	                <p:panel header="Personal Details">
-	                    <p:messages/>
-	                    <h:panelGrid columns="2" columnClasses="label, value">
-	                        <h:outputText value="Id: *"/>
-	                        <p:inputText value="#{orcamentoWizard.orcamento.id}" required="true" label="id"/>
-	
-	                        <h:outputText value="Prioridade: *"/>
-	                        <p:inputText value="#{orcamentoWizard.orcamento.prioridade}" required="true" label="Prioridade"/>
-	
-	                        <h:outputText value="Skip to last: "/>
-	                        <h:selectBooleanCheckbox value="#{orcamentoWizard.skip}"/>
-	                    </h:panelGrid>
-	                </p:panel>
-	            </p:tab>
-	
-	            <p:tab id="address" title="Address">
-	                <p:panel header="Address Details">
-	                    <p:messages/>
-	                    <h:panelGrid columns="2" columnClasses="label, value">
-	                        <h:outputText value="Valor serviços: "/>
-	                        <p:inputText value="#{orcamentoWizard.orcamento.val_s}"/>
-	
-	                        <h:outputText value="Valor itens: "/>
-	                        <p:inputText value="#{orcamentoWizard.orcamento.val_i}"/>
-	
-	                        <h:outputText value="Valor funcionarios: "/>
-	                        <p:inputText value="#{orcamentoWizard.orcamento.val_f}"/>
-	
-	                        <h:outputText value="Skip to last: "/>
-	                        <h:selectBooleanCheckbox value="#{orcamentoWizard.skip}"/>
-	                    </h:panelGrid>
-	                </p:panel>
-	            </p:tab>
-	
-	            <p:tab id="confirm" title="Confirmation">
-	                <p:panel header="Confirmation">
-	                    <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
-	                        <h:panelGrid columns="2" columnClasses="label, value">
-	                            <h:outputText value="Id: "/>
-	                            <h:outputText value="#{orcamentoWizard.orcamento.id}" styleClass="outputLabel"/>
-	
-	                            <h:outputText value="Prioridade: "/>
-	                            <h:outputText value="#{orcamentoWizard.orcamento.prioridade}" styleClass="outputLabel"/>
-	
-	                        </h:panelGrid>
-	
-	                        <h:panelGrid columns="2" columnClasses="label, value">
-	                            <h:outputText value="Valor serviços: "/>
-	                            <h:outputText value="#{orcamentoWizard.orcamento.val_s}" styleClass="outputLabel"/>
-	
-	                            <h:outputText value="Valor itens: "/>
-	                            <h:outputText value="#{orcamentoWizard.orcamento.val_i}" styleClass="outputLabel"/>
-	
-	                            <h:outputText value="Valor funcionarios: "/>
-	                            <h:outputText value="#{orcamentoWizard.orcamento.val_f}" styleClass="outputLabel"/>
-	
-	                            <h:outputText/>
-	                            <h:outputText/>
-	                        </h:panelGrid>
-	                    </h:panelGrid>
-	
-	                    <p:commandButton value="Submit" action="#{orcamentoWizard.save}" update="growl" process="@this"/>
-	                </p:panel>
-	            </p:tab>
-	        </p:wizard>
-	
-	    </h:form>
+		<p:dataTable id="checkboxDT" var="cliente" value="#{dtClienteView.clientesTabela}"
+        		selection="#{dtClienteView.clientesSelecionados}" rowKey="#{cliente.cnpj}"
+				style="margin-bottom:0" paginator="true" rows="5" selectionPageOnly="false">
+        	<p:column selectionMode="multiple" style="width:16px;text-align:center"/>
+            <p:column headerText="Cnpj" filterBy="#{cliente.cnpj}">
+                <h:outputText value="#{cliente.cnpj}" />
+            </p:column>
+
+            <p:column headerText="Nome" filterBy="#{cliente.nome}">
+                <h:outputText value="#{cliente.nome}" />
+            </p:column>
+
+            <p:column headerText="Estado" filterBy="#{cliente.estado}">
+                <h:outputText value="#{cliente.estado}" />
+            </p:column>
+
+            <p:column headerText="Cep" filterBy="#{cliente.cep}">
+                <h:outputText value="#{cliente.cep}" />
+            </p:column>
+            <p:column>
+			    <p:linkButton outcome="cadastro_wizard" icon="pi pi-plus" style="margin-right:40px;" title="Icon Only">
+			        <f:param name="productId"/>
+			    </p:linkButton>
+			    <p:linkButton outcome="cadastro_wizard" icon="pi pi-plus" title="Icon Only">
+			        <f:param name="productId"/>
+			    </p:linkButton>
+            </p:column>
+        </p:dataTable>
 	</div>
+	</h:form>
 	
 </body>
 
