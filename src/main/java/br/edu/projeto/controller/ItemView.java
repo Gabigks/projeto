@@ -27,10 +27,14 @@ public class ItemView implements Serializable{
     
     private double valorFinal;
     
+    private double quantidade;
+    
     
     @PostConstruct
     public void init() {
     	ItemesTabela = ItemDAO.listarTodos();
+    	
+//    	quantidade= 0d;
     }
 
 
@@ -78,6 +82,31 @@ public class ItemView implements Serializable{
 	
 		
 		
+
+	public double getQuantidade() {
+		//caralho
+		setValorFinal(valorFinal+quantidade);
+		return quantidade;
+	}
+
+
+	public void setQuantidade(double quantidade) {
+		this.quantidade = quantidade;
+	
+		
+		
+	}
+
+
+	public double getValorFinal() {
+		return valorFinal;
+	}
+
+
+	public void setValorFinal(double valorFinal) {
+		this.valorFinal = valorFinal;
+	}
+
 
 	public List<FilterMeta> getFilterBy() {
 		return filterBy;

@@ -6,10 +6,13 @@
     xmlns:f="http://java.sun.com/jsf/core"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:p="http://primefaces.org/ui">
+
     
 <h:head>
     <title>item</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    
 </h:head>
 
 <h:body>
@@ -69,15 +72,21 @@
             <p:column headerText="Descricao" filterBy="#{item.desc}">
                 <h:outputText value="#{item.desc}" />
             </p:column>
-              <p:column>
-			    <p:linkButton outcome="cadastro_wizard" icon="pi pi-plus" style="margin-right:40px;" title="Icon Only">
-			        <f:param name="productId"/>
-			    </p:linkButton>
-			    <p:linkButton outcome="cadastro_wizard" icon="pi pi-plus" title="Icon Only">
-			        <f:param name="productId"/>
-			    </p:linkButton>
+              <p:column >
+              	<p:outputLabel for="valorFi"  value="Quantidade" />
+			    <p:inputNumber id="valorFi" value="#{dtItemView.quantidade}"  modifyValueOnWheel="false" />
             </p:column>
         </p:dataTable>
+        
+        
+        	     
+            <div id="valorFinal" class="field col-12 md:col-4">
+                <p:outputLabel for="input1" value="No Configuration"/>
+                <p:inputNumber id="input1" value="#{dtItemView.valorFinal}" modifyValueOnWheel="false" />
+            </div>
+            
+             
+        
 	</div>
 	</h:form>
 	
