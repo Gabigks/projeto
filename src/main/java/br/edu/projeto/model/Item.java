@@ -41,8 +41,8 @@ public class Item {
 	@NotNull
 	private String desc;
 	
-    @ManyToMany(mappedBy = "itens", fetch = FetchType.EAGER)
-    private List<Orcamento> orcamento= new ArrayList<Orcamento>();
+//    @ManyToMany(mappedBy = "itens", fetch = FetchType.EAGER)
+//    private List<Orcamento> orcamento= new ArrayList<Orcamento>();
 
 	public String getId() {
 		return id;
@@ -92,12 +92,12 @@ public class Item {
 		this.desc = desc;
 	}
 
-	public List<Orcamento> getOrcamento() {
-		return orcamento;
-	}
-
-	public void setOrcamento(List<Orcamento> orcamento) {
-		this.orcamento = orcamento;
-	}
+//	public List<Orcamento> getOrcamento() {
+//		return orcamento;
+//	}
+//
+//	public void setOrcamento(List<Orcamento> orcamento) {
+//		this.orcamento = orcamento;
+//	}
 	
 }

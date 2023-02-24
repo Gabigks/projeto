@@ -57,11 +57,11 @@ public class Orcamento {
 	
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	 //Mapeia tabela intermediária (criada em relacionamentos Muitos para muitos), não é necessário uma classe modelo para a tabela intermediária
-	 @JoinTable(
-	      name = "orçamento_itens",
-	      joinColumns = @JoinColumn(name = "fk_orcamento_id_orcamento"),
-	      inverseJoinColumns = @JoinColumn(name = "fk_item_id_item")
-	)
+//	 @JoinTable(
+//	      name = "orçamento_itens",
+//	      joinColumns = @JoinColumn(name = "fk_orcamento_id_orcamento"),
+//	      inverseJoinColumns = @JoinColumn(name = "fk_item_id_item")
+//	)
 	private List<Item> itens = new ArrayList<Item>();
 
 	

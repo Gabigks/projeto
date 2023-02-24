@@ -8,14 +8,16 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 @Entity
 @Table(name = "funcionario")
 public class Funcionario {
 	
 	@Id
+//	@CPF
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_funcionario")
-	private Integer id;
+	private Integer cpf;
 	
 	@NotNull
 	private String cargo;
@@ -26,12 +28,12 @@ public class Funcionario {
 	@NotNull
 	private Double vlhora;
 
-	public Integer getId() {
-		return id;
+	public Integer getCpf() {
+		return cpf;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(Integer cpf) {
+		this.cpf = cpf;
 	}
 
 	public String getCargo() {
@@ -50,7 +52,7 @@ public class Funcionario {
 		this.nome = nome;
 	}
 
-	public Double getValor() {
+	public Double getVlhora() {
 		return vlhora;
 	}
 

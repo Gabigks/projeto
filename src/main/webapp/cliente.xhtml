@@ -14,7 +14,7 @@
 
 <h:body>
 
-	<h:form>
+		<h:form>
 	    <div class="card">
 	        <p:growl>
 	            <p:autoUpdate/>
@@ -23,13 +23,13 @@
 			        <p:menuitem value="Dados cadastrais" outcome="orcamento" icon="pi pi pi-id-card">
 			            <f:param name="i" value="0"/>
 			        </p:menuitem>
-			        <p:menuitem value="Funcionarios" outcome="cliente" icon="pi pi-fw pi-users">
+			        <p:menuitem value="Funcionarios" outcome="funcionario" icon="pi pi-fw pi-users">
 			            <f:param name="i" value="1"/>
 			        </p:menuitem>
-			        <p:menuitem value="Itens" icon="pi pi-fw pi-wrench">
+			        <p:menuitem value="Itens" outcome="item" icon="pi pi-fw pi-wrench">
 			            <f:param name="i" value="2"/>
 			        </p:menuitem>
-			        <p:menuitem value="Serviços" icon="pi pi-fw pi-book">
+			        <p:menuitem value="Serviços" outcome="servico" icon="pi pi-fw pi-book">
 			            <f:param name="i" value="3"/>
 			        </p:menuitem>
 			        <p:menuitem value="Impostos" icon="pi pi-fw pi-money-bill">
@@ -41,7 +41,7 @@
 			    </p:tabMenu>
 		</div>
 	</h:form>
-
+	
 	<h:form>
 	<div class="card2">
 		<p:dataTable id="checkboxDT" var="cliente" value="#{dtClienteView.clientesTabela}"
