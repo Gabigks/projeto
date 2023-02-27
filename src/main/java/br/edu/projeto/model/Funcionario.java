@@ -16,7 +16,7 @@ public class Funcionario {
 	
 	@Id
 	@CPF
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private String cpf;
 	
 	@NotNull

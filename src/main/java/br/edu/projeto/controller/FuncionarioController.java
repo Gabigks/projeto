@@ -87,13 +87,15 @@ public class FuncionarioController implements Serializable{
     	//		TipoPermissao permissao = tipoPermissaoDAO.encontrarPermissao(id);
     	//		permissao.addUsuario(this.usuario);	
     	//	}
+		
+		
         
 
 		try {
 
 			if (this.funcionario.getCpf() != null) {
 				this.FuncionarioDAO.salvar(this.funcionario);
-				this.Funcionarios = FuncionarioDAO.listarTodos();
+				
 				this.facesContext.addMessage(null, new FacesMessage("Funcionario Criado"));
 			} else {
 				this.FuncionarioDAO.atualizar(this.funcionario);

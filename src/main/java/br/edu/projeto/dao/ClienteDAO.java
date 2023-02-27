@@ -3,11 +3,13 @@ package br.edu.projeto.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.UserTransaction;
 
 import br.edu.projeto.model.Cliente;
 
@@ -16,6 +18,9 @@ public class ClienteDAO implements Serializable{
 	@Inject
 	//Cria a conexão e controla a transação com o SGBD (usado pelo Hibernate)
     private EntityManager em;
+	
+	@Resource
+	private UserTransaction transaction;
 	
 	public Cliente encontrarId(String id) {
        // return em.find(Cliente.class, id);
@@ -42,7 +47,24 @@ public class ClienteDAO implements Serializable{
 	    return em.createQuery("SELECT c FROM Cliente c ", Cliente.class).getResultList();      
 	}
 		public void salvar(Cliente c) {
-		em.persist(c);
+			
+			  try{
+			      
+		             transaction.begin();
+		            
+		            //session.beginTransaction();
+		       
+		          
+		            em.persist(c);
+		         
+		            //session.getTransaction().commit();
+		            transaction.commit();
+		        }
+			
+				catch(Exception e){
+					e.printStackTrace();
+				}
+		
 	}
 
 	public void atualizar(Cliente c) {

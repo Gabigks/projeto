@@ -1,6 +1,8 @@
 package br.edu.projeto.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -18,8 +20,8 @@ import br.edu.projeto.model.Item;
 @ViewScoped
 public class ItemView implements Serializable{
 	private List<Item> ItemesTabela;
-    private Item ItemSelecionado;
-    private List<Item> ItemesSelecionados;
+    private Item ItemSelecionado ;
+    private List<Item> ItemesSelecionados =new ArrayList<Item>();
     @Inject
     private ItemDAO ItemDAO;
     
@@ -27,12 +29,14 @@ public class ItemView implements Serializable{
     
     private double valorFinal;
     
-    private double quantidade;
+    
     
     
     @PostConstruct
     public void init() {
     	ItemesTabela = ItemDAO.listarTodos();
+    	
+    	
     	
 //    	quantidade= 0d;
     }
@@ -78,24 +82,17 @@ public class ItemView implements Serializable{
 		this.ItemDAO = ItemDAO;
 	}
 	
+	
 
 	
-		
-		
-
-	public double getQuantidade() {
-		//caralho
-		setValorFinal(valorFinal+quantidade);
-		return quantidade;
-	}
-
-
-	public void setQuantidade(double quantidade) {
-		this.quantidade = quantidade;
-	
-		
-		
-	}
+	public void attQTD() {
+		for (Item i : ItemesSelecionados) {
+			
+			this.valorFinal+=1;
+			
+		}
+			
+		}
 
 
 	public double getValorFinal() {

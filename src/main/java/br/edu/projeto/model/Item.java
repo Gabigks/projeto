@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -41,8 +42,23 @@ public class Item {
 	@NotNull
 	private String desc;
 	
+	@Transient
+	private double quantidade;
+	
+	
+	
+	
+	
 //    @ManyToMany(mappedBy = "itens", fetch = FetchType.EAGER)
 //    private List<Orcamento> orcamento= new ArrayList<Orcamento>();
+
+	public double getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(double quantidade) {
+		this.quantidade = quantidade;
+	}
 
 	public String getId() {
 		return id;

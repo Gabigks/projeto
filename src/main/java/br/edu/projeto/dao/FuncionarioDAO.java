@@ -3,8 +3,14 @@ package br.edu.projeto.dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.transaction.UserTransaction;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import br.edu.projeto.model.Funcionario;
 
@@ -13,6 +19,8 @@ public class FuncionarioDAO implements Serializable {
 	@Inject
 	//Cria a conexão e controla a transação com o SGBD (usado pelo Hibernate)
     private EntityManager em;
+	@Resource
+	private UserTransaction transaction;
 	
 	public Funcionario encontrarId(String id) {
        // return em.find(Funcionario.class, id);
@@ -40,7 +48,26 @@ public class FuncionarioDAO implements Serializable {
 	}
 	
 	public void salvar(Funcionario c) {
-		em.persist(c);
+		
+		
+        try{
+      
+             transaction.begin();
+            
+            //session.beginTransaction();
+       
+          
+            em.persist(c);
+         
+            //session.getTransaction().commit();
+            transaction.commit();
+        }
+	
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	public void atualizar(Funcionario c) {
