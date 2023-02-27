@@ -39,16 +39,16 @@ public class FuncionarioDAO implements Serializable {
 	    return em.createQuery("SELECT f FROM Funcionario f ", Funcionario.class).getResultList();      
 	}
 	
-//	public void salvar(Funcionario c) {
-//		em.persist(c);
-//	}
-//	
-//	public void atualizar(Funcionario c) {
-//		em.merge(c);
-//	}
-//	
-//	public void excluir(Funcionario c) {
-//		em.remove(em.getReference(Funcionario.class, c.getCnpj()));
-//	}
+	public void salvar(Funcionario c) {
+		em.persist(c);
+	}
+	
+	public void atualizar(Funcionario c) {
+		em.merge(c);
+	}
+	
+	public void excluir(Funcionario c) {
+		em.remove(em.getReference(Funcionario.class, c.getCpf()));
+	}
 
 }

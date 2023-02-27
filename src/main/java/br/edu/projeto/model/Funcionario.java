@@ -15,9 +15,9 @@ import org.hibernate.validator.constraints.br.CPF;
 public class Funcionario {
 	
 	@Id
-//	@CPF
+	@CPF
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer cpf;
+	private String cpf;
 	
 	@NotNull
 	private String cargo;
@@ -28,11 +28,13 @@ public class Funcionario {
 	@NotNull
 	private Double vlhora;
 
-	public Integer getCpf() {
+	
+
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setId(Integer cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
