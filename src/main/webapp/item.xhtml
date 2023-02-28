@@ -43,6 +43,7 @@
 	</h:form>
 
 
+<<<<<<< Updated upstream
 
 
 	<h:form>
@@ -79,6 +80,56 @@
             </p:column>
         </p:dataTable>
 	</div>
+=======
+	<h:form id="itemForm">
+		<div class="card">
+			<p:dataTable id="radioDT" var="item"
+				value="#{dtItemView.itemesTabela}"
+				selection="#{dtItemView.itemSelecionado}" rowKey="#{item.id}" selectionMode="single" >
+				
+				<p:ajax event="rowSelectCheckbox" listener="#{dtItemView.onRowSelectCheckbox}" />	
+	
+				<p:column headerText="Id" filterBy="#{item.id}">
+					<h:outputText value="#{item.id}" />
+				</p:column>
+
+				<p:column headerText="Nome" filterBy="#{item.nome}">
+					<h:outputText value="#{item.nome}" />
+				</p:column>
+
+				<p:column headerText="Categoria" filterBy="#{item.categoria}">
+					<h:outputText value="#{item.categoria}" />
+				</p:column>
+
+				<p:column headerText="custo UN" filterBy="#{item.custoun}">
+					<h:outputText value="#{item.custoun}" />
+				</p:column>
+				<p:column headerText="Descricao" filterBy="#{item.desc}">
+					<h:outputText value="#{item.desc}" />
+				</p:column>
+				<p:column>
+				
+					<p:outputLabel for="quantidade" value="Quantidade" />
+					<p:inputNumber id="quantidade" value="#{item.quantidade}"
+						modifyValueOnWheel="false" >
+						
+						<p:ajax event="valueChange" listener="#{dtItemView.attQTD()}" update=":itemForm:valorFinal"/> 
+						</p:inputNumber>
+				</p:column>
+				<f:facet name="footer">
+					<p:commandButton process="atualiza" value="atualiza" action="#{searchPlants.showDetailsj	}"/>
+				</f:facet>
+				
+			</p:dataTable>
+			
+			<p:panel id="pnl" header="Draggable Panel">
+				<p:commandButton type="button" value="ATUALIZA" actionListener="#{dtItemView.attQTD()}" update=":itemForm:valorFinal"></p:commandButton>
+		        <h:outputText id="valorFinal" value="#{dtItemView.valorFinal}"/>
+		    </p:panel>
+
+
+		</div>
+>>>>>>> Stashed changes
 	</h:form>
 	
 </h:body>
