@@ -16,11 +16,13 @@
 					widgetVar="ServicoDialog" responsive="true">
 					<p:outputPanel id="Servico-conteudo-dialog" class="ui-fluid">
 						<p:outputPanel rendered="#{not empty servicoController.servico}">
+						
 							<div class="field">
-								<p:outputLabel for="id">Id</p:outputLabel>
-								<p:inputText id="id" value="#{servicoController.servico.id}"
+								<p:outputLabel for="idServ">Id</p:outputLabel>
+								<p:inputText id="idServ" value="#{servicoController.servico.id}"
 									required="true" />
 							</div>
+							
 							<div class="field">
 								<p:outputLabel for="setor">Setor</p:outputLabel>
 								<p:inputText id="setor" value="#{servicoController.servico.setor}"
@@ -28,7 +30,7 @@
 							</div>
 							<div class="field">
 								<p:outputLabel for="descricao">Descricao</p:outputLabel>
-								<p:inputText id="descricao" value="#{servicoController.servico.descricao}"
+								<p:inputText id="descricao" value="#{servicoController.servico.desc}"
 									required="true" />
 							</div>
 						</p:outputPanel>
@@ -93,13 +95,7 @@
 							<p:resetInput target=":dialogs:Servico-conteudo-dialog" />
 						</p:commandButton>
 
-						<p:commandButton value="Listar" icon="pi pi-plus"
-							
-							update=":dialogs:Servico-conteudo-dialog"
-							oncomplete="PF('listaDialog').show()"
-							styleClass="ui-button-success" style="margin-right: .5rem">
-							<p:resetInput target=":dialogs:Servico-conteudo-dialog" />
-						</p:commandButton>
+						
 
 					</p:toolbarGroup>
 				</p:toolbar>
@@ -119,7 +115,7 @@
 						<h:outputText value="#{servico.setor}" />
 					</p:column>
 					<p:column headerText="Descricao">
-						<h:outputText value="#{servico.descricao}" />
+						<h:outputText value="#{servico.desc}" />
 					</p:column>
 				</p:dataTable>
 

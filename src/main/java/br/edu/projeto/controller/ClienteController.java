@@ -19,6 +19,7 @@ import org.primefaces.PrimeFaces;
 
 import br.edu.projeto.dao.ClienteDAO;
 import br.edu.projeto.model.Cliente;
+import br.edu.projeto.model.TipoPermissao;
 
 @ViewScoped
 @Named
@@ -36,7 +37,7 @@ public class ClienteController implements Serializable{
 
 	private Map<String, String> clientesLista;
 
-	private String clienteSelecionado;
+	//private String clienteSelecionado;
 
 	@PostConstruct
     	//Verifica se usuário está autenticado e possui a permissão adequada
@@ -63,9 +64,9 @@ public class ClienteController implements Serializable{
 		return clientes;
 	}
 
-	public void onClienteSelect() {
-		cliente = clienteDAO.encontrarId(clienteSelecionado);
-	}
+//	public void onClienteSelect() {
+	//	cliente = clienteDAO.encontrarId(clienteSelecionado);
+	//}
 
 
 	public void setClientes(List<Cliente> clientes) {
@@ -80,13 +81,13 @@ public class ClienteController implements Serializable{
 		this.clientesLista = clientesLista;
 	}
 
-	public String getClienteSelecionado() {
-		return clienteSelecionado;
-	}
+//	public String getClienteSelecionado() {
+	//	return clienteSelecionado;
+	//}
 
-	public void setClienteSelecionado(String clienteSelecionado) {
-		this.clienteSelecionado = clienteSelecionado;
-	}
+	//public void setClienteSelecionado(String clienteSelecionado) {
+	//	this.clienteSelecionado = clienteSelecionado;
+	//}
 
 	public ClienteDAO getClienteDAO() {
 		return clienteDAO;
@@ -117,16 +118,14 @@ public class ClienteController implements Serializable{
 	public void salvar() {
 
 		try {
+			
+			
 
 			if (this.cliente.getCnpj() != null) {
 				this.clienteDAO.salvar(this.cliente);
 				this.clientes = clienteDAO.listarTodos();
 				this.facesContext.addMessage(null, new FacesMessage("Cliente Criado"));
-			} else {
-				this.clienteDAO.atualizar(this.cliente);
-				this.facesContext.addMessage(null, new FacesMessage("Cliente Atualizado"));
-			}
-			this.clientes = clienteDAO.listarTodos();
+			} 
 			// Atualiza e executa elementos Javascript na tela assincronamente
 			PrimeFaces.current().executeScript("PF('clienteDialog').hide()");
 			PrimeFaces.current().ajax().update("form:mensagens", "form:cliente");
@@ -149,11 +148,18 @@ public class ClienteController implements Serializable{
         }
 			
 	}
+	public void alterar() {
+		
+		this.clienteDAO.atualizar(this.cliente);
+		this.clientes = clienteDAO.listarTodos();
+		this.facesContext.addMessage(null, new FacesMessage("Cliente Atualizado"));
+		//this.usuario.setSenha("");
+	}
 
 	private String getMensagemErro(Exception e) {
 	    String erro = "Falha no sistema!. Contacte o administrador do sistema.";
 	    if (e == null) 
-	        return erro;
+	        return erro;	
 	    Throwable t = e;
 	    while (t != null) {
 	        erro = t.getLocalizedMessage();

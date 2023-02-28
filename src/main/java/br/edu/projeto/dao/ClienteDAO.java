@@ -38,11 +38,31 @@ public class ClienteDAO implements Serializable{
 	}
 
 	public void atualizar(Cliente c) {
-		em.merge(c);
+		 try{ 
+	            transaction.begin();
+	            em.merge(c);
+	            transaction.commit();
+	        } catch(Exception e){
+				e.printStackTrace();
+			}
+		
 	}
 	
 	public void excluir(Cliente c) {
-		em.remove(em.getReference(Cliente.class, c.getCnpj()));
+		//em.remove(em.getReference(Cliente.class, c.getCnpj()));}
+		 try{ 
+	            transaction.begin();
+	            em.remove(em.getReference(Cliente.class, c.getCnpj()));
+	            transaction.commit();
+	        } catch(Exception e){
+				e.printStackTrace();
+			}
 	}
+	}
+
+		
+		
+		
 	
-}
+	
+
