@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	template="/WEB-INF/templates/default.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<h1>Relação de Serviços</h1>
+
+		<div class="card">
+			<h:form id="dialogs">
+				<p:growl id="mensagens" />
+				<p:dialog header="Novo Servico" showEffect="fade" modal="true"
+					widgetVar="ServicoDialog" responsive="true">
+					<p:outputPanel id="Servico-conteudo-dialog" class="ui-fluid">
+						<p:outputPanel rendered="#{not empty servicoController.servico}">
+							<div class="field">
+								<p:outputLabel for="id">Id</p:outputLabel>
+								<p:inputText id="id" value="#{servicoController.servico.id}"
+									required="true" />
+							</div>
+							<div class="field">
+								<p:outputLabel for="setor">Setor</p:outputLabel>
+								<p:inputText id="setor" value="#{servicoController.servico.setor}"
+									required="true" />
+							</div>
+							<div class="field">
+								<p:outputLabel for="descricao">Descricao</p:outputLabel>
+								<p:inputText id="descricao" value="#{servicoController.servico.descricao}"
+									required="true" />
+							</div>
+						</p:outputPanel>
+					</p:outputPanel>
+
+					<f:facet name="footer">
+						<p:commandButton value="Salvar" icon="pi pi-check"
+							actionListener="#{servicoController.salvar}"
+							update="Servico-conteudo-dialog dialogs:mensagens"
+							process="Servico-conteudo-dialog @this" />
+						<p:commandButton value="Cancelar" icon="pi pi-times"
+							onclick="PF('ServicoDialog').hide()" class="ui-button-secondary"
+							type="button" />
+					</f:facet>
+
+				</p:dialog>
+				<p:confirmDialog widgetVar="removerServicoDialog" showEffect="fade"
+					width="300" message="Desejar remover este Servico?"
+					header="Confirm" severity="warn">
+					<p:commandButton value="Sim" icon="pi pi-check"
+						actionListener="#{servicoController.remover}" process="@this"
+						oncomplete="PF('removerServicoDialog').hide()" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-button-secondary" icon="pi pi-times"
+						onclick="PF('removerServicoDialog').hide()" />
+				</p:confirmDialog>
+
+						<f:facet name="footer">
+							<p:commandButton value="Salvar" icon="pi pi-check"
+								actionListener="#{servicoController.salvar}"
+								update="Servico-conteudo-dialog dialogs:mensagens"
+								process="Servico-conteudo-dialog @this" />
+							<p:commandButton value="Cancelar" icon="pi pi-times"
+								onclick="PF('ServicoDialog').hide()" class="ui-button-secondary"
+								type="button" />
+						</f:facet>
+					
+				
+				<p:confirmDialog widgetVar="removerServicoDialog" showEffect="fade"
+					width="300" message="Desejar remover este Serviço?"
+					header="Confirm" severity="warn">
+					<p:commandButton value="Sim" icon="pi pi-check"
+						actionListener="#{servicoController.remover}" process="@this"
+						oncomplete="PF('removerServicoDialog').hide()" />
+					<p:commandButton value="Não" type="button"
+						styleClass="ui-button-secondary" icon="pi pi-times"
+						onclick="PF('removerServicoDialog').hide()" />
+				</p:confirmDialog>
+			</h:form>
+
+
+			<h:form id="form">
+				<p:growl id="mensagens" showDetail="true" />
+				<!-- botoes -->
+				<p:toolbar>
+					<p:toolbarGroup>
+						<p:commandButton value="Novo" icon="pi pi-plus"
+							actionListener="#{servicoController.novoCadastro()}"
+							update=":dialogs:Servico-conteudo-dialog"
+							oncomplete="PF('ServicoDialog').show()"
+							styleClass="ui-button-success" style="margin-right: .5rem">
+							<p:resetInput target=":dialogs:Servico-conteudo-dialog" />
+						</p:commandButton>
+
+						<p:commandButton value="Listar" icon="pi pi-plus"
+							
+							update=":dialogs:Servico-conteudo-dialog"
+							oncomplete="PF('listaDialog').show()"
+							styleClass="ui-button-success" style="margin-right: .5rem">
+							<p:resetInput target=":dialogs:Servico-conteudo-dialog" />
+						</p:commandButton>
+
+					</p:toolbarGroup>
+				</p:toolbar>
+			</h:form>
+
+			<h:form id="tabela">
+				<p:dataTable id="Servico" var="servico"
+					value="#{servicoController.servicos}">
+					<f:facet name="header">
+						Servico
+		            </f:facet>
+
+					<p:column headerText="Id">
+						<h:outputText value="#{servico.id}" />
+					</p:column>
+					<p:column headerText="Setor">
+						<h:outputText value="#{servico.setor}" />
+					</p:column>
+					<p:column headerText="Descricao">
+						<h:outputText value="#{servico.descricao}" />
+					</p:column>
+				</p:dataTable>
+
+			</h:form>
+
+		</div>
+
+	</ui:define>
+</ui:composition>
+
+

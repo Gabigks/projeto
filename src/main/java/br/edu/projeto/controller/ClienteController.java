@@ -23,22 +23,16 @@ import br.edu.projeto.model.Cliente;
 @ViewScoped
 @Named
 public class ClienteController implements Serializable{
+	
 	@Inject
 	private FacesContext facesContext;
 	
-
 	@Inject
     private ClienteDAO clienteDAO;
 	
 	private List<Cliente>clientes;
-	
-
 
 	private Cliente cliente;
-
-
-
-	// private Map<String, Map<String,String>> data = new HashMap<>();
 
 	private Map<String, String> clientesLista;
 
@@ -77,12 +71,6 @@ public class ClienteController implements Serializable{
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-
-
-
-
-
-
 
 	public Map<String, String> getClientesLista() {
 		return clientesLista;
@@ -127,13 +115,6 @@ public class ClienteController implements Serializable{
 
 
 	public void salvar() {
-      //  if (usuarioValido()) {
-    	//	this.usuario.getPermissoes().clear();
-    	//	for (Integer id: this.permissoesSelecionadas) {
-    	//		TipoPermissao permissao = tipoPermissaoDAO.encontrarPermissao(id);
-    	//		permissao.addUsuario(this.usuario);	
-    	//	}
-        
 
 		try {
 
@@ -169,17 +150,16 @@ public class ClienteController implements Serializable{
 			
 	}
 
-
-private String getMensagemErro(Exception e) {
-    String erro = "Falha no sistema!. Contacte o administrador do sistema.";
-    if (e == null) 
-        return erro;
-    Throwable t = e;
-    while (t != null) {
-        erro = t.getLocalizedMessage();
-        t = t.getCause();
-    }
-    return erro;
-}
+	private String getMensagemErro(Exception e) {
+	    String erro = "Falha no sistema!. Contacte o administrador do sistema.";
+	    if (e == null) 
+	        return erro;
+	    Throwable t = e;
+	    while (t != null) {
+	        erro = t.getLocalizedMessage();
+	        t = t.getCause();
+	    }
+	    return erro;
+	}
 
 }

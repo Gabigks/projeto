@@ -92,7 +92,7 @@ public class ItemView implements Serializable{
 			
 		}
 			
-		}
+	}
 
 
 	public double getValorFinal() {

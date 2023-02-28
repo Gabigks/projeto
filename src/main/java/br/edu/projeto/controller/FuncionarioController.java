@@ -20,7 +20,6 @@ import br.edu.projeto.model.Funcionario;
 @ViewScoped
 public class FuncionarioController implements Serializable{
 	
-	
 	@Inject
 	private FacesContext facesContext;
 	
@@ -34,68 +33,13 @@ public class FuncionarioController implements Serializable{
 	
 	@PostConstruct
     public void init() {
-    	//Verifica se usuário está autenticado e possui a permissão adequada
-//    	if (!this.facesContext.getExternalContext().isUserInRole("ADMINISTRADOR")) {
-//    		try {
-//				this.facesContext.getExternalContext().redirect("login-error.xhtml");
-//			} catch (IOException e) {e.printStackTrace();}
-//    	}
-    	//Inicializa elementos importantes
     	this.Funcionarios = FuncionarioDAO.listarTodos();
     }
 	
-	
-
-	public Funcionario getFuncionario() {
-		return funcionario;
-	}
-
-
-
-	public void setFuncionario(Funcionario Funcionario) {
-		this.funcionario = Funcionario;
-	}
-
-
-
-	
-
-
-
-
-	public List<Funcionario> getFuncionarios() {
-		return Funcionarios;
-	}
-
-
-
-	public void setFuncionarios(List<Funcionario> funcionarios) {
-		Funcionarios = funcionarios;
-	}
-
-
-
-	public void novoCadastro() {
-        this.setFuncionario(new Funcionario());
-    }
-
-
 	public void salvar() {
-      //  if (usuarioValido()) {
-    	//	this.usuario.getPermissoes().clear();
-    	//	for (Integer id: this.permissoesSelecionadas) {
-    	//		TipoPermissao permissao = tipoPermissaoDAO.encontrarPermissao(id);
-    	//		permissao.addUsuario(this.usuario);	
-    	//	}
-		
-		
-        
-
 		try {
-
 			if (this.funcionario.getCpf() != null) {
 				this.FuncionarioDAO.salvar(this.funcionario);
-				
 				this.facesContext.addMessage(null, new FacesMessage("Funcionario Criado"));
 			} else {
 				this.FuncionarioDAO.atualizar(this.funcionario);
@@ -122,25 +66,39 @@ public class FuncionarioController implements Serializable{
             String errorMessage = getMensagemErro(e);
             this.facesContext.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, null));
         }
-			
 	}
 
+	
+	private String getMensagemErro(Exception e) {
+	    String erro = "Falha no sistema!. Contacte o administrador do sistema.";
+	    if (e == null) 
+	        return erro;
+	    Throwable t = e;
+	    while (t != null) {
+	        erro = t.getLocalizedMessage();
+	        t = t.getCause();
+	    }
+	    return erro;
+	}
 
-private String getMensagemErro(Exception e) {
-    String erro = "Falha no sistema!. Contacte o administrador do sistema.";
-    if (e == null) 
-        return erro;
-    Throwable t = e;
-    while (t != null) {
-        erro = t.getLocalizedMessage();
-        t = t.getCause();
+	public Funcionario getFuncionario() {
+		return funcionario;
+	}
+
+	public void setFuncionario(Funcionario Funcionario) {
+		this.funcionario = Funcionario;
+	}
+
+	public List<Funcionario> getFuncionarios() {
+		return Funcionarios;
+	}
+
+	public void setFuncionarios(List<Funcionario> funcionarios) {
+		Funcionarios = funcionarios;
+	}
+
+	public void novoCadastro() {
+        this.setFuncionario(new Funcionario());
     }
-    return erro;
-}
-	
-	
-	
-	
-	
 
 }

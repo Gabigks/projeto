@@ -13,7 +13,6 @@ import javax.validation.constraints.NotNull;
 public class Servico {
 	
 		@Id
-		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(name = "id_servico")
 		private Integer id;
 		
@@ -21,7 +20,8 @@ public class Servico {
 		private String setor;
 		
 		@NotNull
-		private String desc;
+		@Column(name = "desc")
+		private String descricao;
 
 		public Integer getId() {
 			return id;
@@ -39,13 +39,14 @@ public class Servico {
 			this.setor = setor;
 		}
 
-		public String getDesc() {
-			return desc;
+		public String getDescricao() {
+			return descricao;
 		}
 
-		public void setDesc(String desc) {
-			this.desc= desc;
+		public void setDescricao(String descricao) {
+			this.descricao = descricao;
 		}
+
 		
 		
 }

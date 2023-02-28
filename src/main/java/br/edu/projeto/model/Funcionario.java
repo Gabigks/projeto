@@ -16,7 +16,6 @@ public class Funcionario {
 	
 	@Id
 	@CPF
-	
 	private String cpf;
 	
 	@NotNull
