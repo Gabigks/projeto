@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -40,18 +41,15 @@ public class ClienteController implements Serializable{
 	//private String clienteSelecionado;
 
 	@PostConstruct
-    	//Verifica se usuário está autenticado e possui a permissão adequada
 	public void init() {
-		// Verifica se usuário está autenticado e possui a permissão adequada
-//    	if (!this.facesContext.getExternalContext().isUserInRole("ADMINISTRADOR")) {
-//    		try {
-//				this.facesContext.getExternalContext().redirect("login-error.xhtml");
-//			} catch (IOException e) {e.printStackTrace();}
-//    	}
-    	//Inicializa elementos importantes
+		
+    	if (!this.facesContext.getExternalContext().isUserInRole("ADMINISTRADOR")) {
+    		try {
+				this.facesContext.getExternalContext().redirect("login-error.xhtml");
+			} catch (IOException e) {e.printStackTrace();}
+    	}
     	this.clientes = clienteDAO.listarTodos();
     
-		// Inicializa elementos importantes
 		this.clientes = clienteDAO.listarTodos();
 		clientesLista = new HashMap<String, String>();
 
